@@ -30,6 +30,7 @@ int		exe_pa(t_stack *a, t_stack *b)
 	a->size++;
 	move_stack(a, "add");
 	a->data[0] = temp;
+	return (0);
 }
 
 int		exe_ra(t_stack *a)
@@ -41,10 +42,12 @@ int		exe_ra(t_stack *a)
 	temp = a->data[0];
 	move_stack(a, "r");
 	a->data[a->size - 1] = temp;
+	return (0);
 }
 
 int		exe_rr(t_stack *a, t_stack *b)
 {
 	exe_ra(a);
 	exe_ra(b);
+	return (0);
 }

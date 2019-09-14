@@ -22,7 +22,7 @@ int		move_stack(t_stack *a, char *direction)
 	while (0 <= size - 1)
 	{
 		a->data[size] = a->data[size - 1];
-		now++;
+		size--;
 	}
 	return (0);
 }
@@ -63,25 +63,30 @@ int		error(t_stack *a, t_stack *b)
 }
 
 
-int		init_stacks(char **input, int len, t_stack *a, t_stack *b)
+int		init_stacks(char **input, int len, t_stack *a,\
+									t_stack *b, int flag_v)
 {
 	int size;
 	int i;
 
 	size = len;
 	a->data = (int*)malloc(len * sizeof(int));
+	a->size = len;
 	b->data = (int*)malloc(len * sizeof(int));
 	if (!a->data || !b->data)
 		return (1);
-	while (len >= 0)
+	while (len > 0)
 	{
 		if (!is_correct_input(input[len - 1]))
 			return error(a, b);
 		a->data[len - 1] = ft_atoi(input[len - 1]);
-		len--;
 		i = len;
 		while (i < size)
 			if (a->data[len - 1] == a->data[i++])
 				return error(a, b);
+		len--;
 	}	
+	if (flag_v)
+		exe_command_v("Init", a, b, size);
+	return (0);
 }
