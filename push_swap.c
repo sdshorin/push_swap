@@ -23,8 +23,8 @@ int		start_sort_v_2(t_stack *a, t_stack *b, t_char_vector *commands)
 	int len;
 
 	len = a->size;
-	if (len < 5)
-		return (sort_short_part_v_2(a, b, len, commands));
+	if (len < 4)
+		return (sort_short_part_up(a, b, len, commands));
 	size_a = first_divide_stack_v_2(a, b ,len, commands);
 	sort_step_up(a, b, size_a, commands);
 	sort_step_down(b, a, len - size_a, commands);

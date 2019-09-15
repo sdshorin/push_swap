@@ -46,7 +46,7 @@ int		sort_step_up(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 {
 	int size_a;
 
-	if (len < 5)
+	if (len < 4)
 		return (sort_short_part_up(a, b, len, commands));
 	size_a = divide_stack(a, b ,len, commands);
 	sort_step_up(a, b, size_a, commands);
@@ -59,13 +59,25 @@ int		sort_step_up(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 
 int				sort_step_down(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 {
-	
+	int size_a;
+
+	if (len < 4)
+		return (sort_short_part_down(a, b, len, commands));
+	size_a = divide_stack(a, b ,len, commands);
+	sort_step_down(a, b, size_a, commands);
+	sort_step_up(b, a, len - size_a, commands);
+	return_stack(a, b, size_a, commands);
+	return (0);
 }
 
 
 
 
 
-int				return_stack(t_stack *a, t_stack *b, int size_a, t_char_vector *commands);
+int				return_stack(t_stack *a, t_stack *b, int size_a, t_char_vector *commands)
+{
+	while (size_a-- > 0)
+		add_command(a, b, commands, "pa\n");
+}
 
 

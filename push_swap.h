@@ -4,6 +4,17 @@
 
 # include "libft/libft.h"
 
+# define SA 0
+# define SB 1
+# define SS 2
+# define PA 3
+# define PB 4
+# define RA 5
+# define RB 6
+# define RR 7
+# define RRA 8
+# define RRB 9
+# define RRR 10
 
 /*
 *	may use lists for optimization
@@ -43,7 +54,7 @@ int				sort_step_up(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				sort_step_down(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				divide_stack(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				sort_short_part_up(t_stack *a, t_stack *b, int len, t_char_vector *commands);
-int				sort_short_part_v_2(t_stack *a, t_stack *b, int len, t_char_vector *commands);
+int				sort_short_part_down(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				return_stack(t_stack *a, t_stack *b, int size_a, t_char_vector *commands);
 

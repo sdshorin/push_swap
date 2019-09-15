@@ -85,6 +85,8 @@ int				ft_max(int a, int b);
 int				ft_min(int a, int b);
 char			ft_findchar(char *str, char target);
 void			ft_write_char_many(char filler, int size);
+void			ft_quick_sort(int *number,int first,int last);
+
 
 typedef struct	s_list
 {
