@@ -45,6 +45,7 @@ int		c_vector_push_back(t_char_vector *c_vector, char c)
 						(c_vector->capacity / 2) * sizeof(char));
 	free(c_vector->data);
 	c_vector->data = new_data;
+	c_vector->data[c_vector->size] = c;
 	return (0);
 }
 
