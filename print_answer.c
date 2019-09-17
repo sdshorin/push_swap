@@ -19,11 +19,11 @@ int		print_step(int com)
 	else if (com == RR)
 		write(1, "rr\n", 3);
 	else if (com == RRA)
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	else if (com == RRB)
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	else if (com == RRR)
-		write(1, "rrr\n", 3);
+		write(1, "rrr\n", 4);
 	return (0);
 }
 

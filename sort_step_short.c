@@ -5,6 +5,8 @@ int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *comm
 {
 	int sep;
 	int return_elem;
+	int	ans;
+
 
 	return_elem = 0;
 	sep = find_sep(a, len);
@@ -19,9 +21,10 @@ int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *comm
 		}
 		len--;
 	}
+	ans = return_elem;
 	while (return_elem--)
 		add_command(a, b, commands, "ra\n");
-	return (0);
+	return (ans);
 
 }
 

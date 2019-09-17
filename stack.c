@@ -24,6 +24,11 @@ int		move_stack(t_stack *a, char *direction)
 		a->data[size] = a->data[size - 1];
 		size--;
 	}
+	int l[10];
+	for (int i = a->size - 1; i>=0; i--)
+		l[i] = a->data[i];
+	l[8] = 6;
+
 	return (0);
 }
 

@@ -10,6 +10,7 @@ int		find_sep(t_stack *a, int len)
 		return (a->data[len / 2]);
 	ft_memcpy(data, a->data, len * sizeof(int));
 	ft_quick_sort(data, 0, len); 
+	free(data);
 	return (data[len / 2]);
 }
 
@@ -18,6 +19,7 @@ int		divide_stack(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 {
 	int sep;
 	int return_elem;
+	int	ans;
 
 	return_elem = 0;
 	sep = find_sep(a, len);
@@ -32,9 +34,10 @@ int		divide_stack(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 		}
 		len--;
 	}
+	ans = return_elem;
 	while (return_elem--)
 		add_command(a, b, commands, "rra\n");
-	return (0);
+	return (ans);
 }
 
 
