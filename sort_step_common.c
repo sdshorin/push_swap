@@ -9,7 +9,7 @@ int		find_sep(t_stack *a, int len)
 	if (!data)
 		return (a->data[len / 2]);
 	ft_memcpy(data, a->data, len * sizeof(int));
-	// ft_quick_sort(data, len); 
+	ft_quick_sort(data, 0, len); 
 	return (data[len / 2]);
 }
 
@@ -78,6 +78,7 @@ int				return_stack(t_stack *a, t_stack *b, int size_a, t_char_vector *commands)
 {
 	while (size_a-- > 0)
 		add_command(a, b, commands, "pa\n");
+	return (0);
 }
 
 

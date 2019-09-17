@@ -49,6 +49,8 @@ int				error(t_stack *a, t_stack *b);
 int				exe_command(char *command, t_stack *a, t_stack *b);
 int 			exe_command_v(char *command, t_stack *a, t_stack *b, int len);
 
+int				find_sep(t_stack *a, int len);
+
 
 int				sort_step_up(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				sort_step_down(t_stack *a, t_stack *b, int len, t_char_vector *commands);
@@ -57,10 +59,13 @@ int				sort_short_part_up(t_stack *a, t_stack *b, int len, t_char_vector *comman
 int				sort_short_part_down(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				return_stack(t_stack *a, t_stack *b, int size_a, t_char_vector *commands);
+int				set_empty_stack(t_stack *a);
+int				copy_stack(t_stack *a, t_stack *b);
 
 int				add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command);
 
 
+int		print_ans(t_char_vector *ans);
 
 
 # endif

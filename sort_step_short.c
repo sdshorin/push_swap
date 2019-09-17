@@ -26,7 +26,7 @@ int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *comm
 }
 
 
-int				sort_short_part_up_2(t_stack *a, t_stack *b, int len, t_char_vector *commands)
+int				sort_short_part_up_2(t_stack *a, t_stack *b, t_char_vector *commands)
 {
 	if (a->data[1] < a->data[0] && a->data[1] < a->data[2])
 	{
@@ -73,12 +73,13 @@ int				sort_short_part_up(t_stack *a, t_stack *b, int len, t_char_vector *comman
 			add_command(a, b, commands, "pa\n");
 			return (sort_short_part_up(a, b, 2, commands));
 		}
-		sort_short_part_up_2(a, b, len, commands);
-	} 
+		sort_short_part_up_2(a, b, commands);
+	}
+	return (0);
 }
 
 
-int		sort_short_part_down_2(t_stack *a, t_stack *b, int len, t_char_vector *commands)
+int		sort_short_part_down_2(t_stack *a, t_stack *b, t_char_vector *commands)
 {
 	if (a->data[1] > a->data[0] && a->data[1] > a->data[2])
 	{
@@ -124,6 +125,7 @@ int		sort_short_part_down(t_stack *a, t_stack *b, int len, t_char_vector *comman
 			add_command(a, b, commands, "pa\n");
 			return (sort_short_part_down(a, b, 2, commands));
 		}
-		sort_short_part_down_2(a, b, len, commands);
-	} 
+		sort_short_part_down_2(a, b, commands);
+	}
+	return (0);
 }

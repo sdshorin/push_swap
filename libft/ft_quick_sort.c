@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int		quick_step(int *num, int first, int last)
+static int	quick_step(int *num, int first, int last)
 {
 	int i;
 	int j;
@@ -21,9 +21,10 @@ int		quick_step(int *num, int first, int last)
 			num[j] = temp;
 		}
 	}
+	return (j);
 }
 
-void ft_quick_sort(int *number,int first,int last)
+void 		ft_quick_sort(int *number,int first,int last)
 {
 	int j;
 	int temp;
@@ -34,7 +35,7 @@ void ft_quick_sort(int *number,int first,int last)
 		temp = number[first];
 		number[first] = number[j];
 		number[j] = temp;
-		quicksort(number,first,j-1);
-		quicksort(number,j+1,last);
+		ft_quick_sort(number, first, j - 1);
+		ft_quick_sort(number, j + 1, last);
 	}
 }

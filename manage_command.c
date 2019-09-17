@@ -4,7 +4,7 @@
 #include "push_swap.h"
 
 
-int		add_to_command_3(t_char_vector *c_vec, char com)
+int		add_command_3(t_char_vector *c_vec, char com)
 {
 	char prev_com;
 
@@ -22,7 +22,7 @@ int		add_to_command_3(t_char_vector *c_vec, char com)
 		return (c_vector_push_back(c_vec,  com));
 }
 
-int		add_to_command_2(t_char_vector *c_vec, char com)
+int		add_command_2(t_char_vector *c_vec, char com)
 {
 	char prev_com;
 
@@ -96,5 +96,5 @@ int		add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
 	else if (!ft_strcmp(command, "rrr\n"))
 		add_to_command(c_vec, RRR);
 	exe_command(command, a, b);
-
+	return (1);
 }
