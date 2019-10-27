@@ -9,17 +9,39 @@ int check_ans(t_stack *a, t_stack *b)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	check(int argc, char **argv, int flag_v)
 {
-	int flag_v;
 	t_stack a;
 	t_stack b;
-	char	buf[5];
+	char	*buf;
 	int		read_size;
 
-	argv++;
+	
+	
+	init_stacks(argv, argc, &a, &b, flag_v);
+	// while ((read_size = read(0, buf, 5)) > 0)
+	while ((read_size = get_next_line(0, &buf)) > 0)
+	{
+		// buf[read_size] = '\0';
+		// replase \n to \0, delete extra strcmp in exe_command
+		exe_command(buf, &a, &b);
+		if (flag_v)
+			exe_command_v(buf, &a, &b, argc);
+	}
+	check_ans(&a, &b);
+	return (0);
+}
+
+
+int main(int argc, char **argv)
+{
+	char 	**need_free;
+	int		flag_v;
+
 	flag_v = 0;
-	if (argc < 2)
+	need_free = NULL;
+	argv++;
+	if (argc-- < 2)
 		return (0);
 	if (!ft_strcmp(argv[0], "-v"))
 	{
@@ -27,13 +49,13 @@ int main(int argc, char **argv)
 		argv++;
 		argc--;
 	}
-	init_stacks(argv, argc - 1, &a, &b, flag_v);
-	while ((read_size = read(0, buf, 5)) > 0)
+	if (argc == 1)
 	{
-		buf[read_size] = '\0';
-		exe_command(buf, &a, &b);
-		if (flag_v)
-			exe_command_v(buf, &a, &b, argc - 1);
+		argc = words_counter(*argv, ' ');
+		argv = ft_strsplit(*argv, ' ');
+		need_free = argv;
 	}
-	check_ans(&a, &b);
+	check(argc, argv, flag_v);
+	if (need_free)
+		delete_str_array(need_free);
 }

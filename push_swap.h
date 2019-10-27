@@ -4,6 +4,9 @@
 
 # include "libft/libft.h"
 
+
+# include <stdio.h>
+
 # define SA 0
 # define SB 1
 # define SS 2
@@ -55,6 +58,7 @@ int				find_sep(t_stack *a, int len);
 int				sort_step_up(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				sort_step_down(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				divide_stack(t_stack *a, t_stack *b, int len, t_char_vector *commands);
+int				divide_stack_down(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				sort_short_part_up(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				sort_short_part_down(t_stack *a, t_stack *b, int len, t_char_vector *commands);
 int				first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *commands);
@@ -63,6 +67,7 @@ int				set_empty_stack(t_stack *a);
 int				copy_stack(t_stack *a, t_stack *b);
 
 int				add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command);
+int				add_commands(t_stack *a, t_stack *b, t_char_vector *c_vec, char *commands);
 
 
 int		print_ans(t_char_vector *ans);

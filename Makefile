@@ -38,7 +38,7 @@ lib:
 
 
 %.o: %.c
-	gcc -g -Wall -Wextra -Werror -c -o $@ $<
+	gcc -g -Wall -Wextra  -c -o $@ $<
 
 clean:
 	/bin/rm -f $(SOURCE:.c=.o)

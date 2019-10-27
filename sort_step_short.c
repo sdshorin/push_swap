@@ -33,11 +33,9 @@ int				sort_short_part_up_2(t_stack *a, t_stack *b, t_char_vector *commands)
 {
 	if (a->data[1] < a->data[0] && a->data[1] < a->data[2])
 	{
-		add_command(a, b, commands, "pb\n");
-		add_command(a, b, commands, "ra\n");
-		add_command(a, b, commands, "pa\n");
+		add_commands(a, b, commands, "ra;pb;rra");
 		sort_short_part_up(a, b, 2, commands);
-		add_command(a, b, commands, "rra\n");
+		add_command(a, b, commands, "pa\n");
 		return (0);
 	}
 	if (a->data[0] < a->data[1] && a->data[0] < a->data[2])
@@ -56,6 +54,7 @@ int				sort_short_part_up(t_stack *a, t_stack *b, int len, t_char_vector *comman
 {
 	if (len < 2)
 		return (0);
+	// printf("start short sort up, len = %d, first elem = %d\n", len, a->data[0]);
 	if (len == 2)
 	{
 		if (a->data[0] > a->data[1])
@@ -68,13 +67,10 @@ int				sort_short_part_up(t_stack *a, t_stack *b, int len, t_char_vector *comman
 			return (0);
 		if (a->data[2] < a->data[1] && a->data[2] < a->data[0])
 		{
-			add_command(a, b, commands, "ra\n");
-			add_command(a, b, commands, "ra\n");
-			add_command(a, b, commands, "pb\n");
-			add_command(a, b, commands, "rra\n");
-			add_command(a, b, commands, "rra\n");
-			add_command(a, b, commands, "pa\n");
-			return (sort_short_part_up(a, b, 2, commands));
+			if (a->data[0] > a->data[1] && a->data[0] > a->data[1])
+				add_command(a, b, commands, "sa\n");
+			add_commands(a, b, commands, "pb;sa;pa;sa");
+			return (0);
 		}
 		sort_short_part_up_2(a, b, commands);
 	}
@@ -86,11 +82,9 @@ int		sort_short_part_down_2(t_stack *a, t_stack *b, t_char_vector *commands)
 {
 	if (a->data[1] > a->data[0] && a->data[1] > a->data[2])
 	{
-		add_command(a, b, commands, "pb\n");
-		add_command(a, b, commands, "ra\n");
-		add_command(a, b, commands, "pa\n");
+		add_commands(a, b, commands, "ra;pb;rra");
 		sort_short_part_down(a, b, 2, commands);
-		add_command(a, b, commands, "rra\n");
+		add_command(a, b, commands, "pa\n");
 		return (0);
 	}
 	if (a->data[0] > a->data[1] && a->data[0] > a->data[2])
@@ -108,6 +102,7 @@ int		sort_short_part_down(t_stack *a, t_stack *b, int len, t_char_vector *comman
 {
 	if (len < 2)
 		return (0);
+	// printf("start short sort down, len = %d, first elem = %d\n", len, a->data[0]);
 	if (len == 2)
 	{
 		if (a->data[0] < a->data[1])
@@ -120,13 +115,10 @@ int		sort_short_part_down(t_stack *a, t_stack *b, int len, t_char_vector *comman
 			return (0);
 		if (a->data[2] > a->data[1] && a->data[2] > a->data[0])
 		{
-			add_command(a, b, commands, "ra\n");
-			add_command(a, b, commands, "ra\n");
-			add_command(a, b, commands, "pb\n");
-			add_command(a, b, commands, "rra\n");
-			add_command(a, b, commands, "rra\n");
-			add_command(a, b, commands, "pa\n");
-			return (sort_short_part_down(a, b, 2, commands));
+			if (a->data[0] < a->data[1] && a->data[0] < a->data[1])
+				add_command(a, b, commands, "sa\n");
+			add_commands(a, b, commands, "pb;sa;pa;sa");
+			return (0);
 		}
 		sort_short_part_down_2(a, b, commands);
 	}

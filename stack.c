@@ -24,11 +24,6 @@ int		move_stack(t_stack *a, char *direction)
 		a->data[size] = a->data[size - 1];
 		size--;
 	}
-	int l[10];
-	for (int i = a->size - 1; i>=0; i--)
-		l[i] = a->data[i];
-	l[8] = 6;
-
 	return (0);
 }
 
@@ -75,13 +70,15 @@ int		init_stacks(char **input, int len, t_stack *a,\
 	int i;
 
 	size = len;
-	a->data = (int*)malloc(len * sizeof(int));
+	a->data = (int*)ft_memalloc(len * sizeof(int));
 	a->size = len;
-	b->data = (int*)malloc(len * sizeof(int));
+	b->data = (int*)ft_memalloc(len * sizeof(int));
+	b->size = 0;
 	if (!a->data || !b->data)
 		return (1);
 	while (len > 0)
 	{
+		// printf("read %s|\n", input[len - 1]);
 		if (!is_correct_input(input[len - 1]))
 			return error(a, b);
 		a->data[len - 1] = ft_atoi(input[len - 1]);

@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-static int	words_counter(char const *s, char c)
+int			words_counter(char const *s, char c)
 {
 	int		counter;
 	char	prev;
-
+	
 	counter = 0;
 	prev = c;
 	while (*s)
@@ -26,8 +26,6 @@ static int	words_counter(char const *s, char c)
 		prev = *s;
 		s++;
 	}
-	if (prev != c)
-		counter++;
 	return (counter);
 }
 
@@ -55,7 +53,7 @@ static char	*copy_string(char const *s, char c)
 	return (ans);
 }
 
-static char	**delete_all(char **ans)
+char		**delete_str_array(char **ans)
 {
 	char	**temp;
 
@@ -85,7 +83,7 @@ char		**ft_strsplit(char const *s, char c)
 			s++;
 		*temp2 = copy_string(s, c);
 		if (!*temp2++)
-			return (delete_all(ans));
+			return (delete_str_array(ans));
 		while (*s && *s != c)
 			s++;
 	}

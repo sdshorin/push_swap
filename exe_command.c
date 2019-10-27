@@ -55,27 +55,27 @@ int 	exe_command_v(char *command, t_stack *a, t_stack *b, int len)
 
 int		exe_command(char *command, t_stack *a, t_stack *b)
 {
-	if (!ft_strcmp(command, "sa\n"))
+	if (!ft_strcmp(command, "sa\n") || !ft_strcmp(command, "sa"))
 		return (exe_s(a));
-	else if (!ft_strcmp(command, "sb\n"))
+	else if (!ft_strcmp(command, "sb\n") || !ft_strcmp(command, "sb"))
 		return (exe_s(b));
-	else if (!ft_strcmp(command, "ss\n"))
+	else if (!ft_strcmp(command, "ss\n") || !ft_strcmp(command, "ss"))
 		return (exe_ss(a, b));
-	else if (!ft_strcmp(command, "pa\n"))
+	else if (!ft_strcmp(command, "pa\n") || !ft_strcmp(command, "pa"))
 		return (exe_pa(a, b));
-	else if (!ft_strcmp(command, "pb\n"))
+	else if (!ft_strcmp(command, "pb\n") || !ft_strcmp(command, "pb"))
 		return (exe_pa(b, a));
-	else if (!ft_strcmp(command, "ra\n"))
+	else if (!ft_strcmp(command, "ra\n") || !ft_strcmp(command, "ra"))
 		return (exe_ra(a));
-	else if (!ft_strcmp(command, "rb\n"))
+	else if (!ft_strcmp(command, "rb\n") || !ft_strcmp(command, "rb"))
 		return (exe_ra(b));
-	else if (!ft_strcmp(command, "rr\n"))
+	else if (!ft_strcmp(command, "rr\n") || !ft_strcmp(command, "rr"))
 		return (exe_rr(a, b));
-	else if (!ft_strcmp(command, "rra\n"))
+	else if (!ft_strcmp(command, "rra\n") || !ft_strcmp(command, "rra"))
 		return (exe_rra(a));
-	else if (!ft_strcmp(command, "rrb\n"))
+	else if (!ft_strcmp(command, "rrb\n") || !ft_strcmp(command, "rrb"))
 		return (exe_rra(b));
-	else if (!ft_strcmp(command, "rrr\n"))
+	else if (!ft_strcmp(command, "rrr\n") || !ft_strcmp(command, "rrr"))
 		return (exe_rrr(a, b));
 	else 
 		return error(a, b);

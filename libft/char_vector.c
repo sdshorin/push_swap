@@ -31,10 +31,10 @@ int		c_vector_push_back(t_char_vector *c_vector, char c)
 {
 	char	*new_data;
 
-	c_vector->size++;
 	if (c_vector->size < c_vector->capacity)
 	{
 		c_vector->data[c_vector->size] = c;
+		c_vector->size++;
 		return (0);
 	}
 	c_vector->capacity *= 2;
@@ -46,6 +46,7 @@ int		c_vector_push_back(t_char_vector *c_vector, char c)
 	free(c_vector->data);
 	c_vector->data = new_data;
 	c_vector->data[c_vector->size] = c;
+	c_vector->size++;
 	return (0);
 }
 

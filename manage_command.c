@@ -49,7 +49,7 @@ int		add_to_command(t_char_vector *c_vec, char com)
 {
 	char prev_com;
 
-	if (c_vec->size < 1)
+	if (c_vec->size < (size_t)1)
 		return (c_vector_push_back(c_vec,  com));
 	prev_com = c_vec->data[c_vec->size - 1];
 	if (com == SA && prev_com == SA)
@@ -70,6 +70,23 @@ int		add_to_command(t_char_vector *c_vec, char com)
 		return (c_vector_pop_back(c_vec));
 	return (add_command_2(c_vec, com));
 }
+
+
+int		add_commands(t_stack *a, t_stack *b, t_char_vector *c_vec, char *commands)
+{
+	char	**command_array;
+	char	**array_to_delete;
+	command_array = ft_strsplit(commands, ';');
+	array_to_delete = command_array;
+	while (*command_array)
+	{
+		add_command(a, b, c_vec, *command_array);
+		command_array++;
+	}
+	delete_str_array(array_to_delete);
+	return (0);
+}
+
 
 int		add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
 {
@@ -96,5 +113,6 @@ int		add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
 	else if (!ft_strcmp(command, "rrr\n"))
 		add_to_command(c_vec, RRR);
 	exe_command(command, a, b);
+	exe_command_v(command, a, b, ft_max(a->size, b->size));
 	return (1);
 }
