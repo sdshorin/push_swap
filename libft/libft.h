@@ -80,6 +80,7 @@ void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 char			*ft_alltoup(char *str);
 char			*ft_alltolower(char *str);
+
 int				ft_clamp(int value, int min, int max);
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
@@ -88,6 +89,8 @@ void			ft_write_char_many(char filler, int size);
 void			ft_quick_sort(int *number,int first,int last);
 char			**delete_str_array(char **ans);
 int				words_counter(char const *s, char c);
+void			ft_str_replace(char *str, char replace, char to);
+
 
 typedef struct	s_list
 {

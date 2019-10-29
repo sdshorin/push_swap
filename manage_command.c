@@ -88,31 +88,42 @@ int		add_commands(t_stack *a, t_stack *b, t_char_vector *c_vec, char *commands)
 }
 
 
-int		add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
+void		prepare_command(t_stack *b, char **command)
 {
-	if (!ft_strcmp(command, "sa\n"))
-		add_to_command(c_vec, SA);
-	else if (!ft_strcmp(command, "sb\n"))
-		add_to_command(c_vec, SB);
-	else if (!ft_strcmp(command, "ss\n"))
-		add_to_command(c_vec, SS);
-	else if (!ft_strcmp(command, "pa\n"))
-		add_to_command(c_vec, PA);
-	else if (!ft_strcmp(command, "pb\n"))
-		add_to_command(c_vec, PB);
-	else if (!ft_strcmp(command, "ra\n"))
-		add_to_command(c_vec, RA);
-	else if (!ft_strcmp(command, "rb\n"))
-		add_to_command(c_vec, RB);
-	else if (!ft_strcmp(command, "rr\n"))
-		add_to_command(c_vec, RR);
-	else if (!ft_strcmp(command, "rra\n"))
-		add_to_command(c_vec, RRA);
-	else if (!ft_strcmp(command, "rrb\n"))
-		add_to_command(c_vec, RRB);
-	else if (!ft_strcmp(command, "rrr\n"))
-		add_to_command(c_vec, RRR);
+	*command = ft_strdup(*command);
+	if (b->type != 'a')
+		return ;
+	if (ft_findchar(*command, 'a'))
+		ft_str_replace(*command, 'a', 'b');
+	else
+		ft_str_replace(*command, 'b', 'a');
+}
+
+void		add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
+{
 	exe_command(command, a, b);
-	exe_command_v(command, a, b, ft_max(a->size, b->size));
-	return (1);
+	prepare_command(b, &command);
+	if (!ft_strcmp(command, "sa"))
+		add_to_command(c_vec, SA);
+	else if (!ft_strcmp(command, "sb"))
+		add_to_command(c_vec, SB);
+	else if (!ft_strcmp(command, "ss"))
+		add_to_command(c_vec, SS);
+	else if (!ft_strcmp(command, "pa"))
+		add_to_command(c_vec, PA);
+	else if (!ft_strcmp(command, "pb"))
+		add_to_command(c_vec, PB);
+	else if (!ft_strcmp(command, "ra"))
+		add_to_command(c_vec, RA);
+	else if (!ft_strcmp(command, "rb"))
+		add_to_command(c_vec, RB);
+	else if (!ft_strcmp(command, "rr"))
+		add_to_command(c_vec, RR);
+	else if (!ft_strcmp(command, "rra"))
+		add_to_command(c_vec, RRA);
+	else if (!ft_strcmp(command, "rrb"))
+		add_to_command(c_vec, RRB);
+	else if (!ft_strcmp(command, "rrr"))
+		add_to_command(c_vec, RRR);
+	free(command);
 }

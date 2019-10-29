@@ -63,6 +63,22 @@ int		error(t_stack *a, t_stack *b)
 }
 
 
+void	make_stack(t_stack	*ans, int len, int is_a)
+{
+	ans->data = (int*)ft_memalloc(len * sizeof(int));
+	if (is_a)
+	{
+		ans->size = len;
+		ans->type = 'a';
+	}
+	else
+	{
+		ans->size = 0;
+		ans->type = 'b';
+	}
+}
+
+
 int		init_stacks(char **input, int len, t_stack *a,\
 									t_stack *b, int flag_v)
 {
@@ -70,10 +86,8 @@ int		init_stacks(char **input, int len, t_stack *a,\
 	int i;
 
 	size = len;
-	a->data = (int*)ft_memalloc(len * sizeof(int));
-	a->size = len;
-	b->data = (int*)ft_memalloc(len * sizeof(int));
-	b->size = 0;
+	make_stack(a, len, 1);
+	make_stack(b, len, 0);
 	if (!a->data || !b->data)
 		return (1);
 	while (len > 0)

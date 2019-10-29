@@ -27,6 +27,7 @@ typedef struct	s_stack
 {
 	int		*data;
 	int		size;
+	char	type;
 }				t_stack;
 
 
@@ -66,7 +67,7 @@ int				return_stack(t_stack *a, t_stack *b, int size_a, t_char_vector *commands)
 int				set_empty_stack(t_stack *a);
 int				copy_stack(t_stack *a, t_stack *b);
 
-int				add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command);
+void			add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command);
 int				add_commands(t_stack *a, t_stack *b, t_char_vector *c_vec, char *commands);
 
 

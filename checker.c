@@ -22,6 +22,7 @@ int	check(int argc, char **argv, int flag_v)
 	// while ((read_size = read(0, buf, 5)) > 0)
 	while ((read_size = get_next_line(0, &buf)) > 0)
 	{
+		ft_str_replace(buf, '\n', '\0');
 		// buf[read_size] = '\0';
 		// replase \n to \0, delete extra strcmp in exe_command
 		exe_command(buf, &a, &b);
