@@ -13,12 +13,12 @@ int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *comm
 	while (len > 0)
 	{
 		if (a->data[0] < sep)
-			add_command(a, b, commands, "pb");
-		else
 		{
-			add_command(a, b, commands, "rra");
+			add_command(a, b, commands, "pb");
 			return_elem++;
 		}
+		else
+			add_command(a, b, commands, "rra");
 		len--;
 	}
 	ans = return_elem;

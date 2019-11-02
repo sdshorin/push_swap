@@ -24,7 +24,7 @@ int		divide_stack(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 
 	return_elem = 0;
 	sep = find_sep(a, len);
-	// printf ("sep: %d, len: %d\n", sep, len);
+	// // printf ("sep: %d, len: %d\n", sep, len);
 	while (len > 0)
 	{
 		if (a->data[0] < sep)
@@ -39,7 +39,7 @@ int		divide_stack(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 	ans = return_elem;
 	while (return_elem--)
 		add_command(a, b, commands, "rra");
-	// printf("---------finish divide------------\n");
+	// // printf("---------finish divide------------\n");
 	return (ans);
 }
 
@@ -52,7 +52,7 @@ int		divide_stack_down(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 
 	return_elem = 0;
 	sep = find_sep(a, len);
-	// printf ("sep: %d, len: %d\n", sep, len);
+	// // printf ("sep: %d, len: %d\n", sep, len);
 	while (len > 0)
 	{
 		if (a->data[0] >= sep)
@@ -67,7 +67,7 @@ int		divide_stack_down(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 	ans = return_elem;
 	while (return_elem--)
 		add_command(a, b, commands, "rra");
-	// printf("---------finish divide------------\n");
+	// // printf("---------finish divide------------\n");
 	return (ans);
 }
 
@@ -109,10 +109,10 @@ int				sort_step_down(t_stack *a, t_stack *b, int len, t_char_vector *commands)
 
 int				return_stack(t_stack *a, t_stack *b, int size_a, t_char_vector *commands)
 {
-	// printf("-------start return stack\n");
+	// // printf("-------start return stack\n");
 	while (size_a-- > 0)
 		add_command(a, b, commands, "pa");
-	// printf("-------finish return stack\n");
+	// // printf("-------finish return stack\n");
 	return (0);
 }
 
