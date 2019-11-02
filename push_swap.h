@@ -70,6 +70,8 @@ int				copy_stack(t_stack *a, t_stack *b);
 void			add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command);
 int				add_commands(t_stack *a, t_stack *b, t_char_vector *c_vec, char *commands);
 
+int is_prev_commands_is(t_char_vector *c_vec, char com, size_t size);
+int c_vector_delete_last_elements(t_char_vector *c_vec, size_t size);
 
 int		print_ans(t_char_vector *ans);
 

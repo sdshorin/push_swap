@@ -45,10 +45,13 @@ int		add_command_2(t_char_vector *c_vec, char com)
 }
 
 
-int		add_to_command(t_char_vector *c_vec, char com)
+int		add_to_command(t_char_vector *c_vec, char com, int size)
 {
 	char prev_com;
 
+	if (com == RA || com == RB || com == RRA || com == RRB)
+		if (is_prev_commands_is(c_vec, com, (size_t)(size - 1)))
+			return (c_vector_delete_last_elements(c_vec, (size_t)(size - 1)));
 	if (c_vec->size < (size_t)1)
 		return (c_vector_push_back(c_vec,  com));
 	prev_com = c_vec->data[c_vec->size - 1];
@@ -99,31 +102,31 @@ void		prepare_command(t_stack *b, char **command)
 		ft_str_replace(*command, 'b', 'a');
 }
 
-void		add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
+void	add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
 {
 	exe_command(command, a, b);
 	prepare_command(b, &command);
 	if (!ft_strcmp(command, "sa"))
-		add_to_command(c_vec, SA);
+		add_to_command(c_vec, SA, a->size);
 	else if (!ft_strcmp(command, "sb"))
-		add_to_command(c_vec, SB);
+		add_to_command(c_vec, SB, b->size);
 	else if (!ft_strcmp(command, "ss"))
-		add_to_command(c_vec, SS);
+		add_to_command(c_vec, SS, b->size);
 	else if (!ft_strcmp(command, "pa"))
-		add_to_command(c_vec, PA);
+		add_to_command(c_vec, PA, b->size);
 	else if (!ft_strcmp(command, "pb"))
-		add_to_command(c_vec, PB);
+		add_to_command(c_vec, PB, a->size);
 	else if (!ft_strcmp(command, "ra"))
-		add_to_command(c_vec, RA);
+		add_to_command(c_vec, RA, a->size);
 	else if (!ft_strcmp(command, "rb"))
-		add_to_command(c_vec, RB);
+		add_to_command(c_vec, RB, b->size);
 	else if (!ft_strcmp(command, "rr"))
-		add_to_command(c_vec, RR);
+		add_to_command(c_vec, RR, b->size);
 	else if (!ft_strcmp(command, "rra"))
-		add_to_command(c_vec, RRA);
+		add_to_command(c_vec, RRA, a->size);
 	else if (!ft_strcmp(command, "rrb"))
-		add_to_command(c_vec, RRB);
+		add_to_command(c_vec, RRB, b->size);
 	else if (!ft_strcmp(command, "rrr"))
-		add_to_command(c_vec, RRR);
+		add_to_command(c_vec, RRR, b->size);
 	free(command);
 }

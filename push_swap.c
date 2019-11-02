@@ -49,12 +49,12 @@ int find_best_sort(int argc, char **argv)
 	init_stacks(argv, argc, &a, &b, 0);
 	copy_stack(&a, &a_old);
 	start_sort_v_1(&a, &b, &commands);
-	// set_empty_stack(&b);
-	// start_sort_v_2(&a_old, &b, &commands_v2);
-	// if (commands.size < commands_v2.size)
+	set_empty_stack(&b);
+	start_sort_v_2(&a_old, &b, &commands_v2);
+	if (commands.size < commands_v2.size)
 		print_ans(&commands);
-	// else
-		// print_ans(&commands_v2);
+	else
+		print_ans(&commands_v2);
 	free_stacks(&a, &b);
 	free(a_old.data);
 	free_c_vector(&commands_v2);
