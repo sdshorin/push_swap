@@ -104,6 +104,7 @@ void		prepare_command(t_stack *b, char **command)
 
 void	add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
 {
+	// exe_command_v(command, a, b, ft_max(a->size, b->size));
 	exe_command(command, a, b);
 	prepare_command(b, &command);
 	if (!ft_strcmp(command, "sa"))

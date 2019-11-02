@@ -54,6 +54,8 @@ int				exe_command(char *command, t_stack *a, t_stack *b);
 int 			exe_command_v(char *command, t_stack *a, t_stack *b, int len);
 
 int				find_sep(t_stack *a, int len);
+int 			is_stack_sorted_up(t_stack *a, int size);
+int				is_stack_sorted_down(t_stack *a, int size);
 
 
 int				sort_step_up(t_stack *a, t_stack *b, int len, t_char_vector *commands);

@@ -15,6 +15,7 @@ int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *comm
 		if (a->data[0] < sep)
 		{
 			add_command(a, b, commands, "pb");
+			add_command(a, b, commands, "rra");
 			return_elem++;
 		}
 		else

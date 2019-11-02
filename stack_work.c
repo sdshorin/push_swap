@@ -50,3 +50,31 @@ int c_vector_delete_last_elements(t_char_vector *c_vec, size_t size)
 		c_vector_pop_back(c_vec);
 	return (0);
 }
+
+
+int is_stack_sorted_up(t_stack *a, int size)
+{
+	if (size < 2)
+		return (0);
+	while (size - 2 >= 0)
+	{
+		if (a->data[size - 1] < a->data[size - 2])
+			return (0);
+		size--;
+	}
+	return (1);
+}
+
+
+int is_stack_sorted_down(t_stack *a, int size)
+{
+	if (size < 2)
+		return (0);
+	while (size - 2 >= 0)
+	{
+		if (a->data[size - 1] > a->data[size - 2])
+			return (0);
+		size--;
+	}
+	return (1);
+}

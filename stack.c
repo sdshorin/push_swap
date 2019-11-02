@@ -92,7 +92,6 @@ int		init_stacks(char **input, int len, t_stack *a,\
 		return (1);
 	while (len > 0)
 	{
-		// printf("read %s|\n", input[len - 1]);
 		if (!is_correct_input(input[len - 1]))
 			return error(a, b);
 		a->data[len - 1] = ft_atoi(input[len - 1]);
