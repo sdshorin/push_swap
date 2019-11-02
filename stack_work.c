@@ -8,6 +8,7 @@ int				copy_stack(t_stack *a, t_stack *b)
 
 	size = a->size;
 	b->size = size;
+	b->type = a->type;
 	b->data = (int*)malloc(size * sizeof(int));
 	if (!a->data || !b->data)
 		return (1);
