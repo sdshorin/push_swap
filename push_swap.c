@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/02 22:43:24 by bjesse            #+#    #+#             */
+/*   Updated: 2019/11/02 22:43:26 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -12,7 +22,7 @@ int		start_sort_v_1(t_stack *a, t_stack *b, t_char_vector *commands)
 	len = a->size;
 	if (len < 4)
 		return (sort_short_part_up(a, b, len, commands));
-	size_a = divide_stack(a, b ,len, commands);
+	size_a = divide_stack(a, b, len, commands);
 	sort_step_up(a, b, size_a, commands);
 	sort_step_down(b, a, len - size_a, commands);
 	return_stack(a, b, len - size_a, commands);
@@ -29,14 +39,14 @@ int		start_sort_v_2(t_stack *a, t_stack *b, t_char_vector *commands)
 	len = a->size;
 	if (len < 4)
 		return (sort_short_part_up(a, b, len, commands));
-	size_a = first_divide_stack_v_2(a, b ,len, commands);
+	size_a = first_divide_stack_v_2(a, b, len, commands);
 	sort_step_up(a, b, size_a, commands);
 	sort_step_down(b, a, len - size_a, commands);
 	return_stack(a, b, len - size_a, commands);
 	return (0);
 }
 
-int find_best_sort(int argc, char **argv)
+int		find_best_sort(int argc, char **argv)
 {
 	t_stack			a;
 	t_stack			b;
@@ -46,7 +56,7 @@ int find_best_sort(int argc, char **argv)
 
 	init_c_vector(&commands);
 	init_c_vector(&commands_v2);
-	init_stacks(argv, argc, &a, &b, 0);
+	init_stacks(argv, argc, &a, &b);
 	copy_stack(&a, &a_old);
 	start_sort_v_1(&a, &b, &commands);
 	set_empty_stack(&b);
@@ -62,8 +72,7 @@ int find_best_sort(int argc, char **argv)
 	return (0);
 }
 
-
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int	need_free;
 

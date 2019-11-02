@@ -86,11 +86,10 @@ int				ft_max(int a, int b);
 int				ft_min(int a, int b);
 char			ft_findchar(char *str, char target);
 void			ft_write_char_many(char filler, int size);
-void			ft_quick_sort(int *number,int first,int last);
+void			ft_quick_sort(int *number, int first, int last);
 char			**delete_str_array(char **ans);
 int				words_counter(char const *s, char c);
 void			ft_str_replace(char *str, char replace, char to);
-
 
 typedef struct	s_list
 {

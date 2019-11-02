@@ -1,8 +1,16 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_command.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/02 22:43:17 by bjesse            #+#    #+#             */
+/*   Updated: 2019/11/02 22:43:18 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int		add_command_3(t_char_vector *c_vec, char com)
 {
@@ -12,14 +20,14 @@ int		add_command_3(t_char_vector *c_vec, char com)
 	if (com == RRA && prev_com == RRB)
 	{
 		c_vector_pop_back(c_vec);
-		return (c_vector_push_back(c_vec,  RRR));
+		return (c_vector_push_back(c_vec, RRR));
 	}
 	if ((com == RRA || com == RRB) && prev_com == RRR)
 	{
 		c_vector_pop_back(c_vec);
-		return (c_vector_push_back(c_vec,  RRA + (com - RRA + 1) % 2));
+		return (c_vector_push_back(c_vec, RRA + (com - RRA + 1) % 2));
 	}
-		return (c_vector_push_back(c_vec,  com));
+	return (c_vector_push_back(c_vec, com));
 }
 
 int		add_command_2(t_char_vector *c_vec, char com)
@@ -34,16 +42,15 @@ int		add_command_2(t_char_vector *c_vec, char com)
 	if (com == RA && prev_com == RB)
 	{
 		c_vector_pop_back(c_vec);
-		return (c_vector_push_back(c_vec,  RR));
+		return (c_vector_push_back(c_vec, RR));
 	}
 	if ((com == RA || com == RB) && prev_com == RR)
 	{
 		c_vector_pop_back(c_vec);
-		return (c_vector_push_back(c_vec,  RA + (com - RA + 1) % 2));
+		return (c_vector_push_back(c_vec, RA + (com - RA + 1) % 2));
 	}
 	return (add_command_3(c_vec, com));
 }
-
 
 int		add_to_command(t_char_vector *c_vec, char com, int size)
 {
@@ -53,7 +60,7 @@ int		add_to_command(t_char_vector *c_vec, char com, int size)
 		if (is_prev_commands_is(c_vec, com, (size_t)(size - 1)))
 			return (c_vector_delete_last_elements(c_vec, (size_t)(size - 1)));
 	if (c_vec->size < (size_t)1)
-		return (c_vector_push_back(c_vec,  com));
+		return (c_vector_push_back(c_vec, com));
 	prev_com = c_vec->data[c_vec->size - 1];
 	if (com == SA && prev_com == SA)
 		return (c_vector_pop_back(c_vec));
@@ -62,36 +69,19 @@ int		add_to_command(t_char_vector *c_vec, char com, int size)
 	if (com == SA && prev_com == SB)
 	{
 		c_vector_pop_back(c_vec);
-		return (c_vector_push_back(c_vec,  SS));
+		return (c_vector_push_back(c_vec, SS));
 	}
 	if ((com == SA || com == SB) && prev_com == SS)
 	{
 		c_vector_pop_back(c_vec);
-		return (c_vector_push_back(c_vec,  (com + 1) % 2));
+		return (c_vector_push_back(c_vec, (com + 1) % 2));
 	}
 	if ((com == PA && prev_com == PB) || (com == PB && prev_com == PA))
 		return (c_vector_pop_back(c_vec));
 	return (add_command_2(c_vec, com));
 }
 
-
-int		add_commands(t_stack *a, t_stack *b, t_char_vector *c_vec, char *commands)
-{
-	char	**command_array;
-	char	**array_to_delete;
-	command_array = ft_strsplit(commands, ';');
-	array_to_delete = command_array;
-	while (*command_array)
-	{
-		add_command(a, b, c_vec, *command_array);
-		command_array++;
-	}
-	delete_str_array(array_to_delete);
-	return (0);
-}
-
-
-void		prepare_command(t_stack *b, char **command)
+void	prepare_command(t_stack *b, char **command)
 {
 	*command = ft_strdup(*command);
 	if (b->type != 'a')
@@ -104,7 +94,6 @@ void		prepare_command(t_stack *b, char **command)
 
 void	add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
 {
-	// exe_command_v(command, a, b, ft_max(a->size, b->size));
 	exe_command(command, a, b);
 	prepare_command(b, &command);
 	if (!ft_strcmp(command, "sa"))

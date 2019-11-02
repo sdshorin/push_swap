@@ -16,7 +16,7 @@ int			words_counter(char const *s, char c)
 {
 	int		counter;
 	char	prev;
-	
+
 	counter = 0;
 	prev = c;
 	while (*s)

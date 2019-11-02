@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exe_command.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/02 22:43:05 by bjesse            #+#    #+#             */
+/*   Updated: 2019/11/02 22:43:10 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int		exe_rra(t_stack *a)
 {
@@ -30,7 +40,7 @@ int		put_stack_element(t_stack *a, int i)
 	return (0);
 }
 
-int 	exe_command_v(char *command, t_stack *a, t_stack *b, int len)
+int		exe_command_v(char *command, t_stack *a, t_stack *b, int len)
 {
 	int i;
 
@@ -47,9 +57,9 @@ int 	exe_command_v(char *command, t_stack *a, t_stack *b, int len)
 	}
 	write(1, "_\t_\na\tb\n", 9);
 	ft_putnbr(a->size);
-		write(1, "\t", 1);
+	write(1, "\t", 1);
 	ft_putnbr(b->size);
-		write(1, "\n", 1);
+	write(1, "\n", 1);
 	return (0);
 }
 
@@ -77,6 +87,6 @@ int		exe_command(char *command, t_stack *a, t_stack *b)
 		return (exe_rra(b));
 	else if (!ft_strcmp(command, "rrr"))
 		return (exe_rrr(a, b));
-	else 
-		return error(a, b);
+	else
+		return (error(a, b));
 }

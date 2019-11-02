@@ -1,5 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/02 22:43:45 by bjesse            #+#    #+#             */
+/*   Updated: 2019/11/02 22:43:47 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "push_swap.h"
 
 int		move_stack(t_stack *a, char *direction)
 {
@@ -40,7 +51,7 @@ int		is_correct_input(char *str)
 		return (0);
 	if (*str == '-' && str++)
 		sig = -1;
-	while(ft_isdigit(*str))
+	while (ft_isdigit(*str))
 	{
 		num_2 = num_2 * 10 + sig * (*str - '0');
 		num = num * 10 + sig * (*str - '0');
@@ -53,8 +64,6 @@ int		is_correct_input(char *str)
 	return (1);
 }
 
-
-
 int		error(t_stack *a, t_stack *b)
 {
 	free_stacks(a, b);
@@ -62,8 +71,7 @@ int		error(t_stack *a, t_stack *b)
 	exit(1);
 }
 
-
-void	make_stack(t_stack	*ans, int len, int is_a)
+void	make_stack(t_stack *ans, int len, int is_a)
 {
 	ans->data = (int*)ft_memalloc(len * sizeof(int));
 	if (is_a)
@@ -78,9 +86,7 @@ void	make_stack(t_stack	*ans, int len, int is_a)
 	}
 }
 
-
-int		init_stacks(char **input, int len, t_stack *a,\
-									t_stack *b, int flag_v)
+int		init_stacks(char **input, int len, t_stack *a, t_stack *b)
 {
 	int size;
 	int i;
@@ -93,15 +99,13 @@ int		init_stacks(char **input, int len, t_stack *a,\
 	while (len > 0)
 	{
 		if (!is_correct_input(input[len - 1]))
-			return error(a, b);
+			return (error(a, b));
 		a->data[len - 1] = ft_atoi(input[len - 1]);
 		i = len;
 		while (i < size)
 			if (a->data[len - 1] == a->data[i++])
-				return error(a, b);
+				return (error(a, b));
 		len--;
-	}	
-	if (flag_v)
-		exe_command_v("Init", a, b, size);
+	}
 	return (0);
 }

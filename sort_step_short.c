@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_step_short.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/02 22:43:30 by bjesse            #+#    #+#             */
+/*   Updated: 2019/11/02 22:43:44 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *commands)
+int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len,
+												t_char_vector *commands)
 {
 	int sep;
 	int return_elem;
 	int	ans;
-
 
 	return_elem = 0;
 	sep = find_sep(a, len);
@@ -26,11 +37,9 @@ int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len, t_char_vector *comm
 	while (return_elem--)
 		add_command(a, b, commands, "ra");
 	return (ans);
-
 }
 
-
-int				sort_short_part_up_2(t_stack *a, t_stack *b, t_char_vector *commands)
+int		sort_short_part_up_2(t_stack *a, t_stack *b, t_char_vector *commands)
 {
 	if (a->data[1] < a->data[0] && a->data[1] < a->data[2])
 	{
@@ -47,15 +56,13 @@ int				sort_short_part_up_2(t_stack *a, t_stack *b, t_char_vector *commands)
 		return (0);
 	}
 	return (0);
-	write (1, "\nERR\n", 5);
 }
 
-
-int				sort_short_part_up(t_stack *a, t_stack *b, int len, t_char_vector *commands)
+int		sort_short_part_up(t_stack *a, t_stack *b, int len,
+											t_char_vector *commands)
 {
 	if (len < 2)
 		return (0);
-	// printf("start short sort up, len = %d, first elem = %d\n", len, a->data[0]);
 	if (len == 2)
 	{
 		if (a->data[0] > a->data[1])
@@ -78,7 +85,6 @@ int				sort_short_part_up(t_stack *a, t_stack *b, int len, t_char_vector *comman
 	return (0);
 }
 
-
 int		sort_short_part_down_2(t_stack *a, t_stack *b, t_char_vector *commands)
 {
 	if (a->data[1] > a->data[0] && a->data[1] > a->data[2])
@@ -96,14 +102,13 @@ int		sort_short_part_down_2(t_stack *a, t_stack *b, t_char_vector *commands)
 		return (0);
 	}
 	return (0);
-	write (1, "\nERR\n", 5);
 }
 
-int		sort_short_part_down(t_stack *a, t_stack *b, int len, t_char_vector *commands)
+int		sort_short_part_down(t_stack *a, t_stack *b, int len,
+													t_char_vector *commands)
 {
 	if (len < 2)
 		return (0);
-	// printf("start short sort down, len = %d, first elem = %d\n", len, a->data[0]);
 	if (len == 2)
 	{
 		if (a->data[0] < a->data[1])
