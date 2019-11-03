@@ -24,21 +24,22 @@ OBJ_N_2 = $(patsubst %.c,%.o,$(SOURCE_N_2))
 
 LIB = libft/libft.a
 
-all: $(NAME_1) $(NAME_2) 
+all: lib $(NAME_1) $(NAME_2)
 
-
-$(NAME_1): $(OBJ) $(OBJ_N_1) lib
+$(NAME_1): $(LIB) $(OBJ) $(OBJ_N_1)
 	gcc -g -Wall -Wextra -Werror -o $(NAME_1) $(SOURCE:.c=.o) $(SOURCE_N_1:.c=.o) $(LIB)
 
-$(NAME_2): $(OBJ) $(OBJ_N_2) lib
+$(NAME_2): $(LIB) $(OBJ) $(OBJ_N_2)
 	gcc -g -Wall -Wextra -Werror -o $(NAME_2) $(SOURCE:.c=.o) $(SOURCE_N_2:.c=.o) $(LIB)
 
+$(LIB):
+	$(MAKE) -C ./libft
+
 lib:
-	make -C ./libft
+	$(MAKE) -C ./libft
 
-
-%.o: %.c
-	gcc -g -Wall -Wextra  -c -o $@ $<
+%.o: %.c $(LIB)
+	gcc -g -Wall -Wextra -Werror -c -o $@ $<
 
 clean:
 	/bin/rm -f $(SOURCE:.c=.o)
