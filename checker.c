@@ -37,8 +37,10 @@ int		check(int argc, char **argv, int flag_v)
 		exe_command(buf, &a, &b);
 		if (flag_v)
 			exe_command_v(buf, &a, &b, argc);
+		free(buf);
 	}
 	check_ans(&a, &b);
+	free_stacks(&a, &b);
 	return (0);
 }
 
