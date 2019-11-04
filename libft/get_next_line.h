@@ -23,6 +23,7 @@ typedef struct	s_fd_list_struct
 {
 	char					*str;
 	int						fd;
+	int						end;
 	struct s_fd_list_struct	*next;
 	struct s_fd_list_struct	*prev;
 }				t_fd_list;

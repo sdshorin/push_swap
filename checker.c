@@ -26,12 +26,12 @@ int		check(int argc, char **argv, int flag_v)
 	t_stack	a;
 	t_stack	b;
 	char	*buf;
-	int		read_size;
+	int		read;
 
 	init_stacks(argv, argc, &a, &b);
 	if (flag_v)
 		exe_command_v("Init", &a, &b, argc);
-	while ((read_size = get_next_line(0, &buf)) > 0)
+	while ((read = get_next_line(0, &buf)) > 0)
 	{
 		ft_str_replace(buf, '\n', '\0');
 		exe_command(buf, &a, &b);

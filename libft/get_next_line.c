@@ -21,6 +21,7 @@ static t_fd_list	*new_t_fd_list(int fd)
 	temp->str = ft_strnew(0);
 	temp->next = NULL;
 	temp->prev = NULL;
+	temp->end = 0;
 	return (temp);
 }
 
@@ -66,11 +67,15 @@ static int			read_to_list(t_fd_list *temp, t_fd_list **start_list)
 	char			*temp_str;
 	int				ch_read;
 
+	if (ft_strchr(temp->str, '\n'))
+		return (1);
 	ft_memset(buff, '\0', BUFF_SIZE);
-	while ((ch_read = read(temp->fd, buff, BUFF_SIZE)))
+	while (!temp->end && (ch_read = read(temp->fd, buff, BUFF_SIZE)))
 	{
 		if (ch_read < 0)
 			return (del_list(&temp, start_list));
+		if (temp->fd == 0 &&ch_read < BUFF_SIZE && !ft_strchr(buff, '\n'))
+			write ((temp->end = 1), "\n", 1);
 		buff[ch_read] = '\0';
 		temp_str = ft_strjoin(temp->str, buff);
 		free(temp->str);
@@ -91,7 +96,7 @@ int					get_next_line(const int fd, char **line)
 	static t_fd_list	*start_list;
 
 	ptr = NULL;
-	if (fd < 0 || !line)
+	if (fd < 0 || !line || BUFF_SIZE < 1)
 		return (-1);
 	temp = find_t_fd_list(fd, &start_list);
 	if (read_to_list(temp, &start_list) == -1)
