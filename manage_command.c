@@ -52,10 +52,72 @@ int		add_command_2(t_char_vector *c_vec, char com)
 	return (add_command_3(c_vec, com));
 }
 
+
+
+int reverse_command(char com)
+{
+	if (com == RA)
+		return (RRA);
+	if (com == RRA)
+		return (RA);
+	if (com == RB)
+		return (RRB);
+	if (com == RRB)
+		return (RB);
+	write(1, "error\n", 6);
+	return(0);
+}
+
+
+int  count_top_elements(t_char_vector *c_vec, char com)
+{
+	size_t size;
+	int counter;
+
+	counter = 0;
+	size = 0;
+
+	while (size < c_vec->size)
+	{
+		if (c_vec->data[c_vec->size - 1 - size] == com)
+			counter++;
+		else
+			return (counter);
+		size++;
+	}
+	return (counter);
+}
+
+int check_circle_rotation(t_char_vector *c_vec, char com, int size)
+{
+	int command_quantity;
+	int		temp;
+
+	if (com != RA && com != RB && com != RRA && com != RRB)
+	{
+		return (0);
+	}
+	command_quantity = count_top_elements(c_vec, com) + 1;
+
+	if (command_quantity <= size / 2)
+		return (0);
+	temp = command_quantity - 1;
+	while (temp--)
+		c_vector_pop_back(c_vec);
+	// printf("%d\n", c_vec->data[c_vec->size - 1]);
+	temp = size - command_quantity;
+	while (temp--)
+		c_vector_push_back(c_vec, reverse_command(com));
+	return (1);
+}
+
+
 int		add_to_command(t_char_vector *c_vec, char com, int size)
 {
 	char prev_com;
 
+	if (check_circle_rotation(c_vec, com , size))
+		return (1);
 	if (com == RA || com == RB || com == RRA || com == RRB)
 		if (is_prev_commands_is(c_vec, com, (size_t)(size - 1)))
 			return (c_vector_delete_last_elements(c_vec, (size_t)(size - 1)));
@@ -94,6 +156,8 @@ void	prepare_command(t_stack *b, char **command)
 
 void	add_command(t_stack *a, t_stack *b, t_char_vector *c_vec, char *command)
 {
+	
+	// exe_command_v(command, a, b, ft_max(a->size, b->size));
 	exe_command(command, a, b);
 	prepare_command(b, &command);
 	if (!ft_strcmp(command, "sa"))
