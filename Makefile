@@ -14,7 +14,8 @@ NAME_1 = checker
 NAME_2 = push_swap
 
 SOURCE =  exe_command_2.c exe_command.c stack_check.c stack.c stack_work.c \
-print_answer.c sort_step_common.c manage_command.c sort_step_short.c tools.c
+print_answer.c sort_step_common.c manage_command.c sort_step_short.c tools.c \
+sort_short_task.c
 SOURCE_N_1 = checker.c
 SOURCE_N_2 = push_swap.c
 

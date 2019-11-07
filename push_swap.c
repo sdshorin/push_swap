@@ -21,8 +21,10 @@ int		start_sort_v_1(t_stack *a, t_stack *b, t_char_vector *commands)
 		return (0);
 	len = a->size;
 	if (len < 4)
-		return (sort_short_part_up(a, b, len, commands));
+		return (sort_short_task(a, b, len, commands));
+	a->first_divide = 1;
 	size_a = divide_stack(a, b, len, commands);
+	a->first_divide = 0;
 	sort_step_up(a, b, size_a, commands);
 	sort_step_down(b, a, len - size_a, commands);
 	return_stack(a, b, len - size_a, commands);
@@ -38,7 +40,7 @@ int		start_sort_v_2(t_stack *a, t_stack *b, t_char_vector *commands)
 		return (0);
 	len = a->size;
 	if (len < 4)
-		return (sort_short_part_up(a, b, len, commands));
+		return (sort_short_task(a, b, len, commands));
 	size_a = first_divide_stack_v_2(a, b, len, commands);
 	sort_step_up(a, b, size_a, commands);
 	sort_step_down(b, a, len - size_a, commands);

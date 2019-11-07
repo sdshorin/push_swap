@@ -27,15 +27,15 @@ int		first_divide_stack_v_2(t_stack *a, t_stack *b, int len,
 		{
 			add_command(a, b, commands, "pb");
 			add_command(a, b, commands, "rra");
-			return_elem++;
 		}
 		else
+		{
+			return_elem++;
 			add_command(a, b, commands, "rra");
+		}
 		len--;
 	}
 	ans = return_elem;
-	while (return_elem--)
-		add_command(a, b, commands, "ra");
 	return (ans);
 }
 

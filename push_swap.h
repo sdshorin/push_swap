@@ -32,6 +32,7 @@ typedef struct	s_stack
 	int		*data;
 	int		size;
 	char	type;
+	int		first_divide;
 }				t_stack;
 
 int				exe_s(t_stack *a);
@@ -58,6 +59,8 @@ int				find_sep(t_stack *a, int len);
 int				is_stack_sorted_up(t_stack *a, int size);
 int				is_stack_sorted_down(t_stack *a, int size);
 
+int				sort_short_task(t_stack *a, t_stack *b, int len,
+													t_char_vector *commands);
 int				sort_step_up(t_stack *a, t_stack *b, int len,
 													t_char_vector *commands);
 int				sort_step_down(t_stack *a, t_stack *b, int len,

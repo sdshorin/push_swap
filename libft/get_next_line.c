@@ -74,8 +74,8 @@ static int			read_to_list(t_fd_list *temp, t_fd_list **start_list)
 	{
 		if (ch_read < 0)
 			return (del_list(&temp, start_list));
-		if (temp->fd == 0 &&ch_read < BUFF_SIZE && !ft_strchr(buff, '\n'))
-			write ((temp->end = 1), "\n", 1);
+		if (temp->fd == 0 && ch_read < BUFF_SIZE && !ft_strchr(buff, '\n'))
+			write((temp->end = 1), "\n", 1);
 		buff[ch_read] = '\0';
 		temp_str = ft_strjoin(temp->str, buff);
 		free(temp->str);

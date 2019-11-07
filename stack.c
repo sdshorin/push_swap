@@ -74,6 +74,7 @@ int		error(t_stack *a, t_stack *b)
 void	make_stack(t_stack *ans, int len, int is_a)
 {
 	ans->data = (int*)ft_memalloc(len * sizeof(int));
+	ans->first_divide = 0;
 	if (is_a)
 	{
 		ans->size = len;

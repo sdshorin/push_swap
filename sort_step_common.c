@@ -34,6 +34,8 @@ int		divide_stack(t_stack *a, t_stack *b, int len,
 		}
 		len--;
 	}
+	if (a->first_divide)
+		return (return_elem);
 	ans = return_elem;
 	while (return_elem--)
 		add_command(a, b, commands, "rra");
